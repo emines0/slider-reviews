@@ -5,3 +5,4 @@
 - useState, useEffect
 - display data from data.js
 - change slide based on changed index onClick at the button
+- auto-play functionality

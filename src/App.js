@@ -6,6 +6,41 @@ function App() {
   const [people, setPeople] = useState(data)
   const [index, setIndex] = useState(0)
 
+  useEffect(() => {
+    const lastIndex = people.length - 1
+
+    if (index < 0) {
+      setIndex(lastIndex)
+      /*
+       * prevent have negative index value
+       */
+    }
+    if (index > lastIndex) {
+      setIndex(0)
+    }
+    /*
+     * when the user runs out of slides set the index to 0
+     */
+  }, [index, people])
+  /*
+   * change index based on button click
+   * useEffect will run when index change or people array change
+   */
+
+  useEffect(() => {
+    let slider = setInterval(() => {
+      setIndex(index + 1)
+    }, 3000)
+    return () => clearInterval(slider)
+    /*
+     * each time will index change (by autoplay or click) the interval will be cleared
+     */
+  }, [index])
+  /*
+   * autoplay effect - change slide each 3s
+   * useEffect will run when index change
+   */
+
   return (
     <section className='section'>
       <div className='title'>
@@ -33,8 +68,6 @@ function App() {
              * When the app initially renders placing the last item to the left side
              */
           }
-
-          useEffect(() => {}, [])
 
           return (
             <article key={id} className={position}>

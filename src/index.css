@@ -248,7 +248,9 @@ article.activeSlide {
 }
 article.lastSlide {
   transform: translateX(-100%);
+  opacity: 0;
 }
 article.nextSlide {
   transform: translateX(100%);
+  opacity: 0;
 }
